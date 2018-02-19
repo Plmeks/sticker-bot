@@ -21,7 +21,7 @@ $(document).ready(function(){
 				t = document.getElementsByTagName("script")[0];
 				e.id = id,
 				e.charset = "utf-8",
-				e.src = chrome.extension.getURL(src), 
+				e.src = chrome.extension.getURL(src),
 				t.parentNode.insertBefore(e, t)
 		}();
 	};

@@ -1,0 +1,39 @@
+{
+   "author": "MAksik",
+   "browser_action": {
+      "default_title": "__MSG_title__"
+   },
+//    "content_scripts": [
+    // {
+    //     "matches": ["http://*/*", "https://*/*"],
+    //     "js": ["core/contentscript.js"]
+    // },
+    // {
+    //     "matches": ["https://vk.com/*"],
+    //     "js": ["core/jquery.js", "core/inject.js"]
+    // }
+    // ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+   "default_locale": "ru",
+   "description": "__MSG_desc__",
+   "permissions": [
+        "tabs", "http://*/*", "https://*/*"
+    ],
+   "homepage_url": "https://vk.com",
+   "icons": {
+      "128": "img/sticker_vk_persik_029.png",
+      "16": "img/sticker_vk_persik_029.png",
+      "48": "img/sticker_vk_persik_029.png"
+   },
+//    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkjJGtyNl/pW5OwG3432d0nsublsZQe8GcrKRG7Oq4cTg+B/x+umG8GgNbeghPHdDnVADWSmzJwAxgER3iLkXeaOP5J8T8nrnQ3LpWP63Ab65WB7C9YgVTTbq4M3rgD9CGhWI+VYjfS6ezdNawLKnwsPl+459GDw1JKoSCzoMtUQi+wjrEVvDf0fgKuLBCDBWM/0P+D0QYYjQVNqoNOQij1hiInTH9M7nG14plpUcwmWgqbrdIxM/L5BKFWvEO9NPpBxnqpgH3WyembF7hj5sWl125bCgmvLSM2CjAI0jpBmnYfpVcRXpGPB85f1ST1sIWhs10s+K9VKYah5wL1zw9wIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_name__",
+   "offline_enabled": false,
+   "background": {
+        "scripts": ["core/background.js"]
+    },
+//    "permissions": [ "http://*/*", "https://*/*", "\u003Call_urls>", "proxy", "activeTab", "alarms", "browsingData", "contextMenus", "cookies", "declarativeContent", "fontSettings", "gcm", "management", "nativeMessaging", "notifications", "sessions", "storage", "tabCapture", "tabs", "topSites", "unlimitedStorage", "webNavigation", "webRequest", "webRequestBlocking" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2018.2.11.3",
+   "web_accessible_resources": [ "core/vk.js", "core/styles.css", "core/jquery.js" ]
+}

@@ -1,79 +1,84 @@
 var StickProject = {};
-
 (function touchJquery() {
     if (!window.jQuery) {
         window.requestAnimationFrame(touchJquery);
     } else {
         $(document).ready(function() {
+            var serverUrl = "https://rurka.ru/";
+            var imgUrl = serverUrl + "stickers/";
+            // $.getJSON(serverUrl + 'stickers.json', function(res){
+            //     alert(res);
+            // });
+           
+            
 
-
-            StickProject.stickGroups = [{
-                id: "500",
-                name: "Brelda",
-                stickers: [{
-                    id: "460006614",
-                }, {
-                    id: "460006625",
-                }, {
-                    id: "460006629",
-                }, {
-                    id: "460006633",
-                }, {
-                    id: "460006635",
-                }, {
-                    id: "460006478",
-                }, {
-                    id: "460006479",
-                }, {
-                    id: "460006480",
-                }, {
-                    id: "460006481",
-                }, {
-                    id: "460006482",
-                }, {
-                    id: "460006484",
-                }, {
-                    id: "460006487",
-                }, {
-                    id: "460006490",
-                }, {
-                    id: "460006492",
-                }, {
-                    id: "460006493",
-                }, {
-                    id: "460006495",
-                }, {
-                    id: "460006496",
-                }, {
-                    id: "460006498",
-                }, {
-                    id: "460006500",
-                }, {
-                    id: "460006501",
-                }, {
-                    id: "460006504",
-                }, {
-                    id: "460006505",
-                }, {
-                    id: "460006507",
-                }, {
-                    id: "460006508",
-                }, {
-                    id: "460006509",
-                }, {
-                    id: "460006511",
-                }, {
-                    id: "460006515",
-                }, {
-                    id: "460006517",
-                }, {
-                    id: "460006519",
-                }, {
-                    id: "460006521",
-                }, {
-                    id: "460006569",
-                }]
-            }];
+            // StickProject.stickGroups = [{
+            //     id: "500",
+            //     name: "Brelda",
+            //     stickers: [{
+            //         id: "460006614",
+            //     }, {
+            //         id: "460006625",
+            //     }, {
+            //         id: "460006629",
+            //     }, {
+            //         id: "460006633",
+            //     }, {
+            //         id: "460006635",
+            //     }, {
+            //         id: "460006478",
+            //     }, {
+            //         id: "460006479",
+            //     }, {
+            //         id: "460006480",
+            //     }, {
+            //         id: "460006481",
+            //     }, {
+            //         id: "460006482",
+            //     }, {
+            //         id: "460006484",
+            //     }, {
+            //         id: "460006487",
+            //     }, {
+            //         id: "460006490",
+            //     }, {
+            //         id: "460006492",
+            //     }, {
+            //         id: "460006493",
+            //     }, {
+            //         id: "460006495",
+            //     }, {
+            //         id: "460006496",
+            //     }, {
+            //         id: "460006498",
+            //     }, {
+            //         id: "460006500",
+            //     }, {
+            //         id: "460006501",
+            //     }, {
+            //         id: "460006504",
+            //     }, {
+            //         id: "460006505",
+            //     }, {
+            //         id: "460006507",
+            //     }, {
+            //         id: "460006508",
+            //     }, {
+            //         id: "460006509",
+            //     }, {
+            //         id: "460006511",
+            //     }, {
+            //         id: "460006515",
+            //     }, {
+            //         id: "460006517",
+            //     }, {
+            //         id: "460006519",
+            //     }, {
+            //         id: "460006521",
+            //     }, {
+            //         id: "460006569",
+            //     }]
+            // }];
             // StickProject.stickGroups = [{
             //     id: 10005,
             //     name: "EeOneGuy",
@@ -175,7 +180,7 @@ var StickProject = {};
                 addMedia = cur.addMedia[window.__addMediaIndex];
 
                 addMedia.unchooseMedia();
-                addMedia.chosenMedias.push(['doc', "-131495752_" + id, false, false]);
+                addMedia.chosenMedias.push(['doc', id, false, false]);
                 addMedia.onChange();
 
                 geByClass1('_im_send').click();
@@ -273,7 +278,7 @@ var StickProject = {};
                         ui_scroll_content.appendChild(emoji_scroll);
 
                         StickProject.stickGroups.forEach(function(item, i, arr) {
-                            var sticker = new StickProject.fastStickerTeleport(item.id, i, item.img);
+                            var sticker = new StickProject.fastStickerTeleport(item.id, i, imgUrl + item.img, item.name);
                             emoji_scroll.appendChild(sticker);
                         });
 
@@ -329,7 +334,7 @@ var StickProject = {};
                                 var test = document.createElement('a');
                                 test.setAttribute('class', 'emoji_tab emoji_govno');
                                 test.setAttribute('id', 'emoji_id_' + item.id);
-                                test.innerHTML = '<img width="22" height="22" src="' + item.img + '" class="emoji_tab_img" style="object-fit: contain;">';
+                                test.innerHTML = '<img width="22" height="22" src="' + imgUrl + item.img + '" class="emoji_tab_img" style="object-fit: contain;">';
                                 // test.innerHTML = '<div class="emoji_tab_icon emoji_sprite emoji_tab_icon_0" style="background-image: url(' + item.img + '); background-size: cover;"></div>';
 
                                 document.querySelector(".emoji_tabs_wrap > span").insertBefore(test, document.querySelector(".emoji_tab_promo").previousSibling);
@@ -358,7 +363,7 @@ var StickProject = {};
 
 
                                 item.stickers.forEach(function(item2, i2, arr2) {
-                                    var sticker = new StickProject.govnoStiker(item2.id, item2.img);
+                                    var sticker = new StickProject.govnoStiker(item2.id, imgUrl + item2.img);
                                     emoji_scroll.appendChild(sticker);
                                 });
                                 ui_scroll_content.appendChild(emoji_scroll);
@@ -370,22 +375,23 @@ var StickProject = {};
                 }
             };
 
-            StickProject.fastStickerTeleport = function(id, num, image) {
+            StickProject.fastStickerTeleport = function(id, num, image, name) {
 
                 var el = document.createElement('a');
                 el.setAttribute('id', 'emoji_sticker_item0_teleport_999_' + id);
                 el.setAttribute('class', "emoji_sticker_item __loaded");
                 el.setAttribute('onclick', 'return StickProject.clickFastStickerTeleport("' + id + '","' + image + '", event)');
 
-                var div = document.createElement('div');
-                div.innerHTML = StickProject.stickGroups[num].stickers.length + ' шт.';
+                // var div = document.createElement('div');
+                // div.innerHTML = StickProject.stickGroups[num].stickers.length + ' шт.';
+                // div.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);;
 
                 var img = document.createElement('img');
                 img.setAttribute('class', "emoji_sticker_image");
                 img.setAttribute('src', image);
                 img.setAttribute('data-src', image);
 
-                el.appendChild(div);
+                // el.appendChild(div);
                 el.appendChild(img);
 
                 return el;
@@ -456,40 +462,19 @@ var StickProject = {};
                 document.head.appendChild(script);
             };
 
-            StickProject.initStickers = function() {
-                alert(124);
+            $.ajax({
+                type: "GET",
+                url: serverUrl + "json.php",
+                dataType: "jsonp",
+                // crossDomain:true,
+                // jsonp: false,
+                // jsonpCallback: "callback",
+                success: function(response) {
 
-                $.ajax({
-                    type: "GET",
-                    url: "https://api.vk.com/method/docs.getUploadServer",
-                    dataType: 'JSONP',
-                    data: {
-                        type: 'graffiti',
-                        access_token: "0f1b86dcc2daa2cfd6c21e04f692868dab2aa3e89d744f88ef32663209f3d2738e041db7fa4c0cacfd173",
-                        v: "5.52"
-                     },
-                    success: (function(data) {
-                        $.ajax({
-                            type: "POST",
-                            url: "https://api.vk.com/method/docs.getUploadServer",
-                            dataType: 'JSONP',
-                            data: {
-                                type: 'graffiti',
-                                access_token: "0f1b86dcc2daa2cfd6c21e04f692868dab2aa3e89d744f88ef32663209f3d2738e041db7fa4c0cacfd173",
-                                v: "5.52"
-                             },
-                            success: (function(data) {
-
-                                data.response.upload_url;
-                            })
-                        });
-                        data.response.upload_url;
-                    })
-                });
-            };
-
-            StickProject.initStickers();
-            // StickProject.init();
+                    StickProject.stickGroups = JSON.parse(response);
+                    StickProject.init();
+                }
+            });
 
             /*
                 Определяем что текущая страница относится к личным сообщениям
